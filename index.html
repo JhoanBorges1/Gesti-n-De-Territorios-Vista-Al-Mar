@@ -1,38 +1,32 @@
+### 🖥️ INTERFAZ MONOCROMÁTICA REFINADA (BLACK & WHITE)
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informe de Predicación - Minimal Mononchrome</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <title>Informe de Predicación - Black & White</title>
+    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+    <link href="[https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap](https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap)" rel="stylesheet">
+    <link href="[https://fonts.googleapis.com/icon?family=Material+Icons+Outlined](https://fonts.googleapis.com/icon?family=Material+Icons+Outlined)" rel="stylesheet">
     <style>
         :root {
-            /* Paleta Monocromática Minimalista */
-            --md-sys-color-background: #FFFFFF;
-            --md-sys-color-on-background: #1C1B1F; /* Casi negro */
-            
-            --md-sys-color-surface: #F8F9FA; /* Gris muy claro para tarjetas */
-            --md-sys-color-on-surface: #1C1B1F;
-            --md-sys-color-on-surface-variant: #49454F; /* Gris medio para subtítulos e iconos */
-
-            /* Elementos de Acción - ESTRICTAMENTE NEGRO */
-            --md-sys-color-primary: #000000; /* Botones principales */
-            --md-sys-color-on-primary: #FFFFFF;
-            
-            /* Bordes y Divisiones Sutiles */
-            --md-sys-color-outline-variant: #E0E0E0;
-
-            /* Tipografía */
-            --body-font: 'Roboto', sans-serif;
+            /* Paleta Estrictamente Monocromática */
+            --bg-color: #FFFFFF;
+            --text-primary: #000000;
+            --text-secondary: #5F6368; /* Gris oscuro para subtítulos */
+            --surface-color: #F8F9FA; /* Gris casi blanco para tarjetas */
+            --border-color: #E0E0E0;
+            --btn-black: #000000;
+            --btn-white: #FFFFFF;
         }
 
         body {
-            font-family: var(--body-font);
-            background-color: var(--md-sys-color-background);
-            color: var(--md-sys-color-on-background);
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
             margin: 0;
             padding: 0;
             display: flex;
@@ -40,193 +34,137 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Contenedor Principal Limitado para limpieza visual */
         .app-container {
             width: 100%;
-            max-width: 800px; /* Centrado y contenido */
-            padding: 24px;
+            max-width: 800px;
+            padding: 40px 24px;
             box-sizing: border-box;
         }
 
-        /* --- Header (Área de Título) --- */
+        /* --- Header --- */
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 32px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--md-sys-color-outline-variant);
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
         }
 
         header h1 {
-            font-size: 28px;
-            font-weight: 400; /* Minimalista, no muy gruesa */
+            font-size: 32px;
+            font-weight: 400;
             margin: 0;
-            letter-spacing: -0.5px;
+            letter-spacing: -1px;
         }
 
-        header .date-range {
+        .date-label {
             font-size: 16px;
-            color: var(--md-sys-color-on-surface-variant);
+            color: var(--text-secondary);
             font-weight: 300;
+            margin-top: 4px;
         }
 
-        /* --- Sección de Botones de Acción (ESTILO NEGRO) --- */
+        /* --- Botones Negros --- */
         .action-bar {
             display: flex;
             gap: 12px;
-            margin-bottom: 32px;
+            margin-bottom: 40px;
         }
 
-        /* Botón Principal (Negro Sólido) */
-        .btn-filled {
-            background-color: var(--md-sys-color-primary);
-            color: var(--md-sys-color-on-primary);
+        .btn-black {
+            background-color: var(--btn-black);
+            color: var(--btn-white);
             border: none;
-            padding: 12px 24px;
-            border-radius: 24px; /* Muy redondeado, estilo M3 */
-            font-family: var(--body-font);
+            padding: 14px 28px;
+            border-radius: 30px;
             font-weight: 500;
             font-size: 14px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 8px;
-            transition: background-color 0.2s, box-shadow 0.2s;
+            gap: 10px;
+            transition: opacity 0.2s;
         }
 
-        .btn-filled:hover {
-            background-color: #333333; /* Gris muy oscuro al hacer hover */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        .btn-black:hover {
+            opacity: 0.85;
         }
 
-        /* Botón Secundario/Tonal (Blanco con Borde o Gris Claro) */
-        .btn-tonal {
-            background-color: var(--md-sys-color-surface);
-            color: var(--md-sys-color-on-surface);
-            border: 1px solid var(--md-sys-color-outline-variant);
-            padding: 12px 24px;
-            border-radius: 24px;
-            font-family: var(--body-font);
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--text-primary);
+            padding: 14px 28px;
+            border-radius: 30px;
             font-weight: 500;
             font-size: 14px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 8px;
-            transition: background-color 0.2s;
+            gap: 10px;
         }
 
-        .btn-tonal:hover {
-            background-color: #F0F0F0;
-        }
-
-        /* --- Lista de Registros (Uno debajo del otro) --- */
+        /* --- Registros en Cascada Vertical --- */
         .records-list {
             display: flex;
             flex-direction: column;
-            gap: 16px; /* Espacio entre registros */
+            gap: 12px;
         }
 
-        /* Estilo de Tarjeta "Bien Hecha" e Individual */
         .record-card {
-            background-color: var(--md-sys-color-background);
-            border: 1px solid var(--md-sys-color-outline-variant);
-            border-radius: 16px; /* Esquinas redondeadas premium */
-            padding: 20px;
-            display: grid;
-            grid-template-columns: 60px 1fr auto; /* Icono | Datos | Flecha/Acción */
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 16px;
-            transition: box-shadow 0.2s, transform 0.2s;
+            transition: border-color 0.2s;
             cursor: pointer;
         }
 
-        /* Efecto sutil al pasar el mouse por la tarjeta entera */
         .record-card:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transform: translateY(-2px);
+            border-color: var(--text-primary);
         }
 
-        /* Contenedor del Icono (Sutil, Gris) */
-        .record-icon-container {
-            background-color: var(--md-sys-color-surface);
-            color: var(--md-sys-color-on-surface-variant);
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .record-icon-container .material-icons-outlined {
-            font-size: 24px;
-        }
-
-        /* Detalles del Registro */
-        .record-details {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .record-title {
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--md-sys-color-on-surface);
-            margin: 0;
-        }
-
-        .record-subtitle {
-            font-size: 14px;
-            font-weight: 300;
-            color: var(--md-sys-color-on-surface-variant);
-            margin: 0;
-        }
-
-        /* Metadatos (Horas, Publicaciones) a la derecha */
-        .record-stats {
-            text-align: right;
+        .record-info {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 20px;
         }
 
-        .stat-group {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
+        /* Iconos en Negro */
+        .record-icon {
+            color: var(--text-primary);
+            font-size: 28px;
         }
 
-        .stat-value {
+        .record-texts h3 {
+            margin: 0;
             font-size: 18px;
             font-weight: 500;
-            color: var(--md-sys-color-on-surface);
         }
 
-        .stat-label {
-            font-size: 12px;
-            font-weight: 400;
-            color: var(--md-sys-color-on-surface-variant);
+        .record-texts p {
+            margin: 4px 0 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .record-data {
+            text-align: right;
+            min-width: 80px;
+        }
+
+        .data-value {
+            display: block;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .data-unit {
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* Flecha indicadora de "más detalles" (Gris sutil) */
-        .record-chevron {
-            color: var(--md-sys-color-outline-variant);
-        }
-
-        /* --- Footer Sutil --- */
-        footer {
-            margin-top: 48px;
-            padding-top: 16px;
-            border-top: 1px solid var(--md-sys-color-outline-variant);
-            text-align: center;
-            font-size: 12px;
-            color: var(--md-sys-color-on-surface-variant);
-            font-weight: 300;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
         }
 
     </style>
@@ -235,95 +173,66 @@
 
     <div class="app-container">
         <header>
-            <div>
-                <h1>Mi Actividad</h1>
-                <div class="date-range">Octubre 2023</div>
-            </div>
-            <button class="btn-tonal" style="padding: 8px; border-radius: 50%;">
-                <span class="material-icons-outlined" style="color: black;">account_circle</span>
-            </button>
+            <h1>Actividad de Marzo</h1>
+            <div class="date-label">Resumen de predicación</div>
         </header>
 
         <div class="action-bar">
-            <button class="btn-filled">
+            <button class="btn-black">
                 <span class="material-icons-outlined">add</span>
                 Nuevo Registro
             </button>
-            <button class="btn-tonal">
-                <span class="material-icons-outlined">send</span>
-                Enviar Informe
+            <button class="btn-outline">
+                <span class="material-icons-outlined">share</span>
+                Compartir
             </button>
         </div>
 
         <div class="records-list">
-
             <div class="record-card">
-                <div class="record-icon-container">
-                    <span class="material-icons-outlined">menu_book</span> </div>
-                <div class="record-details">
-                    <h3 class="record-title">Predicación Pública</h3>
-                    <p class="record-subtitle">Sábado por la mañana • Centro Ciudad</p>
+                <div class="record-info">
+                    <span class="material-icons-outlined record-icon">history_edu</span>
+                    <div class="record-texts">
+                        <h3>Predicación por Carta</h3>
+                        <p>Mañana del lunes • Territorio 14</p>
+                    </div>
                 </div>
-                <div class="record-stats">
-                    <div class="stat-group">
-                        <span class="stat-value">2:30</span>
-                        <span class="stat-label">Horas</span>
-                    </div>
-                    <div class="stat-group">
-                        <span class="stat-value">5</span>
-                        <span class="stat-label">Publ.</span>
-                    </div>
-                    <span class="material-icons-outlined record-chevron">chevron_right</span>
+                <div class="record-data">
+                    <span class="data-value">2:00</span>
+                    <span class="data-unit">Horas</span>
                 </div>
             </div>
 
             <div class="record-card">
-                <div class="record-icon-container">
-                    <span class="material-icons-outlined">people</span>
-                </div>
-                <div class="record-details">
-                    <h3 class="record-title">Revisitas</h3>
-                    <p class="record-subtitle">Calle Falsa 123 • Familia Pérez</p>
-                </div>
-                <div class="record-stats">
-                    <div class="stat-group">
-                        <span class="stat-value">1:15</span>
-                        <span class="stat-label">Horas</span>
+                <div class="record-info">
+                    <span class="material-icons-outlined record-icon">home</span>
+                    <div class="record-texts">
+                        <h3>Casa en Casa</h3>
+                        <p>Sábado • Urbanización El Valle</p>
                     </div>
-                    <div class="stat-group">
-                        <span class="stat-value">3</span>
-                        <span class="stat-label">Revis.</span>
-                    </div>
-                    <span class="material-icons-outlined record-chevron">chevron_right</span>
+                </div>
+                <div class="record-data">
+                    <span class="data-value">3:30</span>
+                    <span class="data-unit">Horas</span>
                 </div>
             </div>
 
             <div class="record-card">
-                <div class="record-icon-container">
-                    <span class="material-icons-outlined">school</span>
-                </div>
-                <div class="record-details">
-                    <h3 class="record-title">Curso Bíblico</h3>
-                    <p class="record-subtitle">Juan Carlos • Estudio Semanal</p>
-                </div>
-                <div class="record-stats">
-                    <div class="stat-group">
-                        <span class="stat-value">1:00</span>
-                        <span class="stat-label">Horas</span>
+                <div class="record-info">
+                    <span class="material-icons-outlined record-icon">menu_book</span>
+                    <div class="record-texts">
+                        <h3>Curso Bíblico</h3>
+                        <p>Estudiante: Carlos M.</p>
                     </div>
-                    <div class="stat-group">
-                        <span class="stat-value">1</span>
-                        <span class="stat-label">Curso</span>
-                    </div>
-                    <span class="material-icons-outlined record-chevron">chevron_right</span>
+                </div>
+                <div class="record-data">
+                    <span class="data-value">1:00</span>
+                    <span class="data-unit">Hora</span>
                 </div>
             </div>
+        </div>
 
-        </div> <footer>
-            Gestor de Predicación Minimalista • v1.0
-        </footer>
     </div>
 
 </body>
 </html>
- 
