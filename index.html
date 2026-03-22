@@ -3,426 +3,326 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Territorios Vista Al Mar</title>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>Informe de Predicación - Minimal Mononchrome</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <style>
         :root {
-            --google-blue: #1a73e8;
-            --google-red: #ea4335;
-            --google-yellow: #fbbc04;
-            --google-green: #34a853;
-            --gemini-bg: #f8f9fa;
-            --gemini-card: #ffffff;
-            --text-main: #202124;
-            --text-sub: #5f6368;
-            --border-radius: 16px;
-            --shadow: 0 1px 3px rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
+            /* Paleta Monocromática Minimalista */
+            --md-sys-color-background: #FFFFFF;
+            --md-sys-color-on-background: #1C1B1F; /* Casi negro */
+            
+            --md-sys-color-surface: #F8F9FA; /* Gris muy claro para tarjetas */
+            --md-sys-color-on-surface: #1C1B1F;
+            --md-sys-color-on-surface-variant: #49454F; /* Gris medio para subtítulos e iconos */
+
+            /* Elementos de Acción - ESTRICTAMENTE NEGRO */
+            --md-sys-color-primary: #000000; /* Botones principales */
+            --md-sys-color-on-primary: #FFFFFF;
+            
+            /* Bordes y Divisiones Sutiles */
+            --md-sys-color-outline-variant: #E0E0E0;
+
+            /* Tipografía */
+            --body-font: 'Roboto', sans-serif;
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--gemini-bg);
-            color: var(--text-main);
+            font-family: var(--body-font);
+            background-color: var(--md-sys-color-background);
+            color: var(--md-sys-color-on-background);
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
+            -webkit-font-smoothing: antialiased;
         }
 
-        header {
+        /* Contenedor Principal Limitado para limpieza visual */
+        .app-container {
             width: 100%;
-            background: var(--gemini-card);
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        h1 {
-            font-family: 'Google Sans', sans-serif;
-            color: var(--google-blue);
-            margin: 0;
-            font-size: 1.5rem;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 30px 0;
-        }
-
-        .module-section {
-            background: var(--gemini-card);
-            border-radius: var(--border-radius);
+            max-width: 800px; /* Centrado y contenido */
             padding: 24px;
-            margin-bottom: 24px;
-            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
-            border: 1px solid #dadce0;
+            box-sizing: border-box;
         }
 
-        .module-header {
+        /* --- Header (Área de Título) --- */
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--md-sys-color-outline-variant);
         }
 
-        .module-title {
-            font-family: 'Google Sans', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: var(--text-main);
+        header h1 {
+            font-size: 28px;
+            font-weight: 400; /* Minimalista, no muy gruesa */
+            margin: 0;
+            letter-spacing: -0.5px;
         }
 
-        .btn-group {
+        header .date-range {
+            font-size: 16px;
+            color: var(--md-sys-color-on-surface-variant);
+            font-weight: 300;
+        }
+
+        /* --- Sección de Botones de Acción (ESTILO NEGRO) --- */
+        .action-bar {
             display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 32px;
         }
 
-        button {
-            padding: 10px 24px;
-            border-radius: 24px;
+        /* Botón Principal (Negro Sólido) */
+        .btn-filled {
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
             border: none;
-            font-family: 'Google Sans', sans-serif;
+            padding: 12px 24px;
+            border-radius: 24px; /* Muy redondeado, estilo M3 */
+            font-family: var(--body-font);
             font-weight: 500;
+            font-size: 14px;
             cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.9rem;
-        }
-
-        .btn-primary { background: var(--google-blue); color: white; }
-        .btn-primary:hover { background: #1557b0; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
-        
-        .btn-outline { background: transparent; border: 1px solid #dadce0; color: var(--google-blue); }
-        .btn-outline:hover { background: #f1f3f4; }
-
-        .btn-danger { background: transparent; color: var(--google-red); border: 1px solid #f5c2c7; }
-        .btn-danger:hover { background: #fce8e6; }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        label { font-size: 0.85rem; font-weight: 500; color: var(--text-sub); }
-
-        input, select, textarea {
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #dadce0;
-            font-size: 1rem;
-            outline: none;
-        }
-
-        input:focus { border: 2px solid var(--google-blue); }
-
-        .checkbox-group {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 10px;
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-        }
-
-        .checkbox-item {
             display: flex;
             align-items: center;
-            gap: 5px;
-            font-size: 0.85rem;
+            gap: 8px;
+            transition: background-color 0.2s, box-shadow 0.2s;
         }
 
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(32, 33, 36, 0.6);
-            z-index: 1000;
+        .btn-filled:hover {
+            background-color: #333333; /* Gris muy oscuro al hacer hover */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Botón Secundario/Tonal (Blanco con Borde o Gris Claro) */
+        .btn-tonal {
+            background-color: var(--md-sys-color-surface);
+            color: var(--md-sys-color-on-surface);
+            border: 1px solid var(--md-sys-color-outline-variant);
+            padding: 12px 24px;
+            border-radius: 24px;
+            font-family: var(--body-font);
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s;
+        }
+
+        .btn-tonal:hover {
+            background-color: #F0F0F0;
+        }
+
+        /* --- Lista de Registros (Uno debajo del otro) --- */
+        .records-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px; /* Espacio entre registros */
+        }
+
+        /* Estilo de Tarjeta "Bien Hecha" e Individual */
+        .record-card {
+            background-color: var(--md-sys-color-background);
+            border: 1px solid var(--md-sys-color-outline-variant);
+            border-radius: 16px; /* Esquinas redondeadas premium */
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 60px 1fr auto; /* Icono | Datos | Flecha/Acción */
+            align-items: center;
+            gap: 16px;
+            transition: box-shadow 0.2s, transform 0.2s;
+            cursor: pointer;
+        }
+
+        /* Efecto sutil al pasar el mouse por la tarjeta entera */
+        .record-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transform: translateY(-2px);
+        }
+
+        /* Contenedor del Icono (Sutil, Gris) */
+        .record-icon-container {
+            background-color: var(--md-sys-color-surface);
+            color: var(--md-sys-color-on-surface-variant);
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
             justify-content: center;
             align-items: center;
-            backdrop-filter: blur(4px);
         }
 
-        .modal-content {
-            background: white;
-            width: 95%;
-            max-width: 800px;
-            max-height: 90vh;
-            border-radius: var(--border-radius);
-            padding: 32px;
-            overflow-y: auto;
-            position: relative;
+        .record-icon-container .material-icons-outlined {
+            font-size: 24px;
         }
 
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: var(--text-sub);
-        }
-
-        .list-container {
-            margin-top: 15px;
-            border-top: 1px solid #eee;
-        }
-
-        .list-item {
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .list-item-info {
+        /* Detalles del Registro */
+        .record-details {
             display: flex;
             flex-direction: column;
+            gap: 4px;
         }
 
-        .hidden { display: none; }
-
-        .sub-territory-entry {
-            background: #ffffff;
-            border: 1px solid #dadce0;
-            padding: 10px;
-            border-radius: 8px;
-            margin-top: 10px;
+        .record-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--md-sys-color-on-surface);
+            margin: 0;
         }
+
+        .record-subtitle {
+            font-size: 14px;
+            font-weight: 300;
+            color: var(--md-sys-color-on-surface-variant);
+            margin: 0;
+        }
+
+        /* Metadatos (Horas, Publicaciones) a la derecha */
+        .record-stats {
+            text-align: right;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .stat-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .stat-value {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--md-sys-color-on-surface);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--md-sys-color-on-surface-variant);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Flecha indicadora de "más detalles" (Gris sutil) */
+        .record-chevron {
+            color: var(--md-sys-color-outline-variant);
+        }
+
+        /* --- Footer Sutil --- */
+        footer {
+            margin-top: 48px;
+            padding-top: 16px;
+            border-top: 1px solid var(--md-sys-color-outline-variant);
+            text-align: center;
+            font-size: 12px;
+            color: var(--md-sys-color-on-surface-variant);
+            font-weight: 300;
+        }
+
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Gestión de Territorios Vista Al Mar</h1>
-</header>
-
-<div class="container">
-    
-    <section class="module-section">
-        <div class="module-header">
-            <div class="module-title">Conductores de Grupo</div>
-            <div class="btn-group">
-                <button class="btn-primary" onclick="openModal('modalConductor')">Agregar Conductor</button>
-                <button class="btn-outline" onclick="toggleVisibility('listaConductores')">Ver Lista de Conductores</button>
+    <div class="app-container">
+        <header>
+            <div>
+                <h1>Mi Actividad</h1>
+                <div class="date-range">Octubre 2023</div>
             </div>
-        </div>
-        
-        <div id="listaConductores" class="list-container hidden">
-            <div class="list-item">
-                <div class="list-item-info">
-                    <strong>Jhoan Borges</strong>
-                    <span>+58 412 1234567</span>
-                </div>
-                <div class="btn-group">
-                    <button class="btn-outline" style="padding: 5px 15px;">Detalles</button>
-                    <button class="btn-outline" style="padding: 5px 15px;">Editar</button>
-                    <button class="btn-danger" style="padding: 5px 15px;">Eliminar</button>
-                </div>
-            </div>
-        </div>
-    </section>
+            <button class="btn-tonal" style="padding: 8px; border-radius: 50%;">
+                <span class="material-icons-outlined" style="color: black;">account_circle</span>
+            </button>
+        </header>
 
-    <section class="module-section">
-        <div class="module-header">
-            <div class="module-title">Territorios de la Congregación</div>
-            <div class="btn-group">
-                <button class="btn-primary" onclick="openModal('modalTerritorio')">Agregar Territorio</button>
-                <button class="btn-outline" onclick="toggleVisibility('listaTerritorios')">Ver Territorios</button>
-            </div>
+        <div class="action-bar">
+            <button class="btn-filled">
+                <span class="material-icons-outlined">add</span>
+                Nuevo Registro
+            </button>
+            <button class="btn-tonal">
+                <span class="material-icons-outlined">send</span>
+                Enviar Informe
+            </button>
         </div>
-        <div id="listaTerritorios" class="list-container hidden">
-            <p style="padding: 15px; color: var(--text-sub);">No hay territorios registrados aún.</p>
-        </div>
-    </section>
 
-    <section class="module-section">
-        <div class="module-header">
-            <div class="module-title">Configuración de Grupos (8)</div>
-        </div>
-        <div class="form-grid" id="gridGrupos">
-            </div>
-        <div style="margin-top:20px; text-align:right;">
-            <button class="btn-primary">Guardar Configuración de Grupos</button>
-        </div>
-    </section>
+        <div class="records-list">
 
-</div>
-
-<div id="modalConductor" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal('modalConductor')">&times;</span>
-        <h2 class="module-title">Registro de Conductor</h2>
-        <form id="formConductor">
-            <div class="form-grid">
-                <div class="input-group">
-                    <label>Nombre</label>
-                    <input type="text" placeholder="Ej: Jhoan" required>
+            <div class="record-card">
+                <div class="record-icon-container">
+                    <span class="material-icons-outlined">menu_book</span> </div>
+                <div class="record-details">
+                    <h3 class="record-title">Predicación Pública</h3>
+                    <p class="record-subtitle">Sábado por la mañana • Centro Ciudad</p>
                 </div>
-                <div class="input-group">
-                    <label>Apellido</label>
-                    <input type="text" placeholder="Ej: Borges" required>
-                </div>
-                <div class="input-group">
-                    <label>Teléfono</label>
-                    <div style="display: flex; gap: 5px;">
-                        <input type="text" value="+58" readonly style="width: 50px; background: #eee; text-align: center;">
-                        <input type="tel" placeholder="4121234567" style="flex: 1;" required>
+                <div class="record-stats">
+                    <div class="stat-group">
+                        <span class="stat-value">2:30</span>
+                        <span class="stat-label">Horas</span>
                     </div>
-                </div>
-                <div class="input-group">
-                    <label>¿Es Anciano?</label>
-                    <select id="selectAnciano">
-                        <option value="no">No</option>
-                        <option value="si">Sí</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="input-group" style="margin-top:20px;">
-                <label>Días de disponibilidad semanal</label>
-                <div class="checkbox-group">
-                    <div class="checkbox-item"><input type="checkbox"> Lunes</div>
-                    <div class="checkbox-item"><input type="checkbox"> Martes</div>
-                    <div class="checkbox-item"><input type="checkbox"> Miércoles</div>
-                    <div class="checkbox-item"><input type="checkbox"> Jueves</div>
-                    <div class="checkbox-item"><input type="checkbox"> Viernes</div>
-                    <div class="checkbox-item"><input type="checkbox"> Sábado</div>
-                    <div class="checkbox-item"><input type="checkbox"> Domingo</div>
-                </div>
-            </div>
-
-            <div class="form-grid">
-                <div class="input-group">
-                    <label>Horarios para conducir</label>
-                    <input type="text" placeholder="Ej: 8:30 AM / 5:00 PM">
-                </div>
-                <div class="input-group">
-                    <label>Día que DESEA conducir este mes (Opcional)</label>
-                    <input type="date">
-                </div>
-                <div class="input-group">
-                    <label>Día que NO PUEDE conducir este mes (Opcional)</label>
-                    <input type="date">
-                </div>
-            </div>
-
-            <div style="margin-top:30px; display:flex; gap:10px; justify-content:flex-end;">
-                <button type="button" class="btn-outline" onclick="closeModal('modalConductor')">Cancelar</button>
-                <button type="submit" class="btn-primary">Guardar Registro</button>
-            </div>
-        </form>
-    </div>
-</div>
-
-<div id="modalTerritorio" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal('modalTerritorio')">&times;</span>
-        <h2 class="module-title">Configuración de Territorio</h2>
-        <form id="formTerritorio">
-            <div class="form-grid">
-                <div class="input-group">
-                    <label>Nombre del Territorio</label>
-                    <input type="text" placeholder="Ej: Casco Central" required>
-                </div>
-                <div class="input-group">
-                    <label>Lugares de encuentro</label>
-                    <input type="text" placeholder="Ej: Plaza Bolívar, Kiosko Azul">
-                </div>
-            </div>
-
-            <div class="form-grid">
-                <div class="input-group">
-                    <label>Días de predicación</label>
-                    <input type="text" placeholder="Ej: Martes, Jueves y Sábados">
-                </div>
-                <div class="input-group">
-                    <label>Horarios de predicación</label>
-                    <input type="text" placeholder="Ej: 9:00 AM a 12:00 PM">
-                </div>
-            </div>
-
-            <div style="background:#f1f3f4; padding:20px; border-radius:12px; margin-top:20px;">
-                <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <label style="color:var(--google-blue); font-weight:bold;">Subterritorios</label>
-                    <button type="button" class="btn-outline" style="font-size: 0.7rem; padding: 4px 12px;" onclick="addSubterritory()">+ Añadir Subterritorio</button>
-                </div>
-                <div id="subterritoriesContainer">
+                    <div class="stat-group">
+                        <span class="stat-value">5</span>
+                        <span class="stat-label">Publ.</span>
                     </div>
+                    <span class="material-icons-outlined record-chevron">chevron_right</span>
+                </div>
             </div>
 
-            <div style="margin-top:30px; display:flex; gap:10px; justify-content:flex-end;">
-                <button type="button" class="btn-outline" onclick="closeModal('modalTerritorio')">Cancelar</button>
-                <button type="submit" class="btn-primary">Guardar Territorio</button>
+            <div class="record-card">
+                <div class="record-icon-container">
+                    <span class="material-icons-outlined">people</span>
+                </div>
+                <div class="record-details">
+                    <h3 class="record-title">Revisitas</h3>
+                    <p class="record-subtitle">Calle Falsa 123 • Familia Pérez</p>
+                </div>
+                <div class="record-stats">
+                    <div class="stat-group">
+                        <span class="stat-value">1:15</span>
+                        <span class="stat-label">Horas</span>
+                    </div>
+                    <div class="stat-group">
+                        <span class="stat-value">3</span>
+                        <span class="stat-label">Revis.</span>
+                    </div>
+                    <span class="material-icons-outlined record-chevron">chevron_right</span>
+                </div>
             </div>
-        </form>
+
+            <div class="record-card">
+                <div class="record-icon-container">
+                    <span class="material-icons-outlined">school</span>
+                </div>
+                <div class="record-details">
+                    <h3 class="record-title">Curso Bíblico</h3>
+                    <p class="record-subtitle">Juan Carlos • Estudio Semanal</p>
+                </div>
+                <div class="record-stats">
+                    <div class="stat-group">
+                        <span class="stat-value">1:00</span>
+                        <span class="stat-label">Horas</span>
+                    </div>
+                    <div class="stat-group">
+                        <span class="stat-value">1</span>
+                        <span class="stat-label">Curso</span>
+                    </div>
+                    <span class="material-icons-outlined record-chevron">chevron_right</span>
+                </div>
+            </div>
+
+        </div> <footer>
+            Gestor de Predicación Minimalista • v1.0
+        </footer>
     </div>
-</div>
-
-<script>
-    function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-    function toggleVisibility(id) { document.getElementById(id).classList.toggle('hidden'); }
-
-    // Generar los 8 grupos con lógica de anciano
-    const gridGrupos = document.getElementById('gridGrupos');
-    for (let i = 1; i <= 8; i++) {
-        const groupCard = document.createElement('div');
-        groupCard.className = 'input-group';
-        groupCard.style.padding = '20px';
-        groupCard.style.border = '1px solid #dadce0';
-        groupCard.style.borderRadius = '12px';
-        groupCard.style.background = '#fff';
-        groupCard.innerHTML = `
-            <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-                <div style="background:var(--google-blue); color:white; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:0.8rem;">${i}</div>
-                <label style="color:var(--text-main); font-weight:700; font-size:1rem; margin:0;">Grupo de Predicación</label>
-            </div>
-            <label>Anciano Responsable (Conductor Sábado Final)</label>
-            <select style="width:100%;">
-                <option value="">Seleccionar anciano...</option>
-                <option value="1">Hermano Pérez</option>
-                <option value="2">Hermano Borges</option>
-                <option value="3">Hermano García</option>
-            </select>
-            <small style="color:var(--text-sub); margin-top:5px;">Este anciano conducirá automáticamente el último sábado del mes.</small>
-        `;
-        gridGrupos.appendChild(groupCard);
-    }
-
-    // Lógica para añadir subterritorios dinámicamente
-    function addSubterritory() {
-        const container = document.getElementById('subterritoriesContainer');
-        const div = document.createElement('div');
-        div.className = 'sub-territory-entry form-grid';
-        div.style.gridTemplateColumns = '1fr 1fr 40px';
-        div.innerHTML = `
-            <input type="text" placeholder="Nombre Subterritorio">
-            <input type="text" placeholder="Días y Horarios">
-            <button type="button" class="btn-danger" style="padding:0; border-radius:8px;" onclick="this.parentElement.remove()">×</button>
-        `;
-        container.appendChild(div);
-    }
-
-    window.onclick = function(event) {
-        if (event.target.className === 'modal') {
-            event.target.style.display = 'none';
-        }
-    }
-</script>
 
 </body>
 </html>
