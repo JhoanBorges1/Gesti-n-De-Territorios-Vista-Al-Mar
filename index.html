@@ -1,4 +1,4 @@
-### 🖥️ INTERFAZ MONOCROMÁTICA REFINADA (BLACK & WHITE)
+### 🏗️ ESTRUCTURA ARQUITECTÓNICA: GESTIÓN DE PREDICACIÓN
 
 ```html
 <!DOCTYPE html>
@@ -6,165 +6,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informe de Predicación - Black & White</title>
+    <title>Gestión de Actividad - Vista Al Mar</title>
     <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
     <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
     <link href="[https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap](https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap)" rel="stylesheet">
-    <link href="[https://fonts.googleapis.com/icon?family=Material+Icons+Outlined](https://fonts.googleapis.com/icon?family=Material+Icons+Outlined)" rel="stylesheet">
     <style>
         :root {
-            /* Paleta Estrictamente Monocromática */
-            --bg-color: #FFFFFF;
-            --text-primary: #000000;
-            --text-secondary: #5F6368; /* Gris oscuro para subtítulos */
-            --surface-color: #F8F9FA; /* Gris casi blanco para tarjetas */
-            --border-color: #E0E0E0;
-            --btn-black: #000000;
-            --btn-white: #FFFFFF;
+            --bg-body: #F7F9FC; /* Fondo sutilmente grisáceo como la imagen */
+            --bg-card: #FFFFFF;
+            --text-main: #000000;
+            --text-muted: #5F6368;
+            --border-light: #E8EAED;
+            --accent-black: #000000;
+            --border-radius-lg: 24px;
+            --border-radius-sm: 12px;
         }
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
+            background-color: var(--bg-body);
+            color: var(--text-main);
             margin: 0;
-            padding: 0;
+            padding: 20px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             -webkit-font-smoothing: antialiased;
         }
 
         .app-container {
             width: 100%;
-            max-width: 800px;
-            padding: 40px 24px;
-            box-sizing: border-box;
-        }
-
-        /* --- Header --- */
-        header {
-            margin-bottom: 40px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
-        }
-
-        header h1 {
-            font-size: 32px;
-            font-weight: 400;
-            margin: 0;
-            letter-spacing: -1px;
-        }
-
-        .date-label {
-            font-size: 16px;
-            color: var(--text-secondary);
-            font-weight: 300;
-            margin-top: 4px;
-        }
-
-        /* --- Botones Negros --- */
-        .action-bar {
+            max-width: 500px; /* Ajustado para vista móvil/compacta como la imagen */
             display: flex;
-            gap: 12px;
-            margin-bottom: 40px;
+            flex-direction: column;
+            gap: 16px;
         }
 
-        .btn-black {
-            background-color: var(--btn-black);
-            color: var(--btn-white);
-            border: none;
-            padding: 14px 28px;
-            border-radius: 30px;
+        /* --- Título Principal --- */
+        .main-title {
+            color: var(--accent-black);
+            font-size: 22px;
+            font-weight: 700;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        /* --- Tarjetas Contenedoras --- */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--border-radius-lg);
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .card-content h2 {
+            font-size: 18px;
             font-weight: 500;
-            font-size: 14px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: opacity 0.2s;
+            margin: 0;
+            max-width: 150px;
+            line-height: 1.3;
         }
 
-        .btn-black:hover {
-            opacity: 0.85;
+        .card-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* --- Botones Estilo Cápsula --- */
+        .btn-black {
+            background-color: var(--accent-black);
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
         }
 
         .btn-outline {
             background-color: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--text-primary);
-            padding: 14px 28px;
-            border-radius: 30px;
-            font-weight: 500;
-            font-size: 14px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* --- Registros en Cascada Vertical --- */
-        .records-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .record-card {
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: border-color 0.2s;
+            color: var(--accent-black);
+            border: 1px solid var(--border-light);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 400;
             cursor: pointer;
         }
 
-        .record-card:hover {
-            border-color: var(--text-primary);
+        /* --- Sección de Configuración de Grupos --- */
+        .group-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--border-radius-lg);
+            padding: 20px;
         }
 
-        .record-info {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        /* Iconos en Negro */
-        .record-icon {
-            color: var(--text-primary);
-            font-size: 28px;
-        }
-
-        .record-texts h3 {
-            margin: 0;
+        .group-section h2 {
             font-size: 18px;
             font-weight: 500;
+            margin-bottom: 20px;
         }
 
-        .record-texts p {
-            margin: 4px 0 0;
-            font-size: 14px;
-            color: var(--text-secondary);
+        .group-item {
+            border: 1px solid var(--border-light);
+            border-radius: var(--border-radius-sm);
+            padding: 16px;
+            margin-bottom: 12px;
         }
 
-        .record-data {
-            text-align: right;
-            min-width: 80px;
+        .group-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
         }
 
-        .data-value {
-            display: block;
-            font-size: 20px;
+        .badge {
+            background-color: var(--accent-black);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
             font-weight: 700;
         }
 
-        .data-unit {
+        .group-name {
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .label-text {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        /* --- Selectores / Dropdowns --- */
+        .select-input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+            background-color: #F1F3F4;
+            color: var(--text-muted);
+            font-size: 14px;
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .helper-text {
             font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-secondary);
+            color: #9AA0A6;
+            margin-top: 8px;
+            display: block;
         }
 
     </style>
@@ -172,66 +178,56 @@
 <body>
 
     <div class="app-container">
-        <header>
-            <h1>Actividad de Marzo</h1>
-            <div class="date-label">Resumen de predicación</div>
-        </header>
+        <h1 class="main-title">Gestión de Actividad Mensual</h1>
 
-        <div class="action-bar">
-            <button class="btn-black">
-                <span class="material-icons-outlined">add</span>
-                Nuevo Registro
-            </button>
-            <button class="btn-outline">
-                <span class="material-icons-outlined">share</span>
-                Compartir
-            </button>
-        </div>
-
-        <div class="records-list">
-            <div class="record-card">
-                <div class="record-info">
-                    <span class="material-icons-outlined record-icon">history_edu</span>
-                    <div class="record-texts">
-                        <h3>Predicación por Carta</h3>
-                        <p>Mañana del lunes • Territorio 14</p>
-                    </div>
-                </div>
-                <div class="record-data">
-                    <span class="data-value">2:00</span>
-                    <span class="data-unit">Horas</span>
-                </div>
+        <div class="card">
+            <div class="card-content">
+                <h2>Conductores de Grupo</h2>
             </div>
-
-            <div class="record-card">
-                <div class="record-info">
-                    <span class="material-icons-outlined record-icon">home</span>
-                    <div class="record-texts">
-                        <h3>Casa en Casa</h3>
-                        <p>Sábado • Urbanización El Valle</p>
-                    </div>
-                </div>
-                <div class="record-data">
-                    <span class="data-value">3:30</span>
-                    <span class="data-unit">Horas</span>
-                </div>
-            </div>
-
-            <div class="record-card">
-                <div class="record-info">
-                    <span class="material-icons-outlined record-icon">menu_book</span>
-                    <div class="record-texts">
-                        <h3>Curso Bíblico</h3>
-                        <p>Estudiante: Carlos M.</p>
-                    </div>
-                </div>
-                <div class="record-data">
-                    <span class="data-value">1:00</span>
-                    <span class="data-unit">Hora</span>
-                </div>
+            <div class="card-actions">
+                <button class="btn-black">Agregar Conductor</button>
+                <button class="btn-outline">Ver Lista</button>
             </div>
         </div>
 
+        <div class="card">
+            <div class="card-content">
+                <h2>Territorios de la Congregación</h2>
+            </div>
+            <div class="card-actions">
+                <button class="btn-black">Agregar Territorio</button>
+                <button class="btn-outline">Ver Territorios</button>
+            </div>
+        </div>
+
+        <div class="group-section">
+            <h2>Configuración de Grupos (8)</h2>
+
+            <div class="group-item">
+                <div class="group-header">
+                    <div class="badge">1</div>
+                    <span class="group-name">Grupo de Predicación</span>
+                </div>
+                <span class="label-text">Anciano Responsable (Conductor)</span>
+                <select class="select-input">
+                    <option>Seleccionar anciano...</option>
+                </select>
+                <span class="helper-text">Este hermano supervisará los informes del grupo.</span>
+            </div>
+
+            <div class="group-item">
+                <div class="group-header">
+                    <div class="badge">2</div>
+                    <span class="group-name">Grupo de Predicación</span>
+                </div>
+                <span class="label-text">Anciano Responsable (Conductor)</span>
+                <select class="select-input">
+                    <option>Seleccionar anciano...</option>
+                </select>
+                <span class="helper-text">Este hermano supervisará los informes del grupo.</span>
+            </div>
+
+        </div>
     </div>
 
 </body>
